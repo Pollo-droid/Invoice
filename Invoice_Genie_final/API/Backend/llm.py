@@ -26,7 +26,8 @@ def call_llm(invoice_text, csv_data):
             reference_data += f"{row['libelleCopro']} - {row['adresse']} - {row['codePostal']} - {row['ville']}\n"
 
         # Use the reference data in the LLM prompt
-        client = openai.OpenAI(api_key="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")
+        client = openai.OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
 
         response = client.chat.completions.create(
             model="gpt-4o-mini",
